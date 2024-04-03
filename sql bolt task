@@ -1,0 +1,104 @@
+1.1.// Define an array of objects representing films
+var films = [
+    { title: "Inception", director: "Christopher Nolan", year: 2010 },
+    { title: "The Dark Knight", director: "Christopher Nolan", year: 2008 },
+    { title: "The Shawshank Redemption", director: "Frank Darabont", year: 1994 },
+    { title: "Pulp Fiction", director: "Quentin Tarantino", year: 1994 },
+    { title: "The Godfather", director: "Francis Ford Coppola", year: 1972 }
+];
+
+// Find the title of each film
+console.log("Titles of Films:");
+films.forEach(function(film) {
+    console.log(film.title);
+});
+
+// Find the director of each film
+console.log("\nDirectors of Films:");
+films.forEach(function(film) {
+    console.log(film.director);
+});
+
+// Find the title and director of each film
+console.log("\nTitle and Director of Films:");
+films.forEach(function(film) {
+    console.log(film.title + " - " + film.director);
+});
+
+// Find the title and year of each film
+  
+console.log("\nTitle and Year of Films:");
+2. 1.Find the movie with a row id of 6:
+  SELECT * FROM movies WHERE id = 6;
+2.Find the movies released in the years between 2000 and 2010:
+  SELECT * FROM movies WHERE year BETWEEN 2000 AND 2010;
+3.Find the movies not released in the years between 2000 and 2010:
+  SELECT * FROM movies WHERE year NOT BETWEEN 2000 AND 2010;
+4.Find the first 5 Pixar movies and their release year:
+  SELECT * FROM movies WHERE studio = 'Pixar' LIMIT 5;
+
+  
+films.forEach(function(film) {
+    console.log(film.title + " - " + film.year);
+})
+3.1.Find all the Toy Story movies:
+SELECT * FROM movies WHERE title LIKE 'Toy Story%';
+2.Find all the movies directed by John Lasseter:
+SELECT * FROM movies WHERE director = 'John Lasseter';
+3.Find all the movies (and director) not directed by John Lasseter:
+SELECT * FROM movies WHERE director != 'John Lasseter';
+4.Find all the WALL- movies*:
+SELECT * FROM movies WHERE title LIKE 'WALL-%';
+4.1.List all directors of Pixar movies (alphabetically), without duplicates:
+SELECT DISTINCT director
+FROM movies
+WHERE studio = 'Pixar'
+ORDER BY director;
+2.List the last four Pixar movies released (ordered from most recent to least):
+SELECT *
+FROM movies
+WHERE studio = 'Pixar'
+ORDER BY year DESC
+LIMIT 4;
+3.List the first five Pixar movies sorted alphabetically:
+SELECT *
+FROM movies
+WHERE studio = 'Pixar'
+ORDER BY title
+LIMIT 5;
+4.List the next five Pixar movies sorted alphabetically:
+SELECT *
+FROM movies
+WHERE studio = 'Pixar'
+ORDER BY title
+LIMIT 5 OFFSET 5;
+5.1.List all the Canadian cities and their populations:
+SELECT city_name, population
+FROM cities
+WHERE country = 'Canada';
+2.Order all the cities in the United States by their latitude from north to south:
+SELECT city_name
+FROM cities
+WHERE country = 'United States'
+ORDER BY latitude DESC;
+3.List all the cities west of Chicago, ordered from west to east:
+SELECT city_name
+FROM cities
+WHERE latitude < (SELECT latitude FROM cities WHERE city_name = 'Chicago')
+ORDER BY latitude;
+4.List the two largest cities in Mexico (by population):
+SELECT city_name, population
+FROM cities
+WHERE country = 'Mexico'
+ORDER BY population DESC
+LIMIT 2;
+5.List the third and fourth largest cities (by population) in the United States and their population:
+SELECT city_name, population
+FROM cities
+WHERE country = 'United States'
+ORDER BY population DESC
+OFFSET 2
+LIMIT 2;
+
+
+
